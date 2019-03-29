@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>de.tri_engineering.atlassian.plugins</groupId>
+    <artifactId>kotlin-${kotlin.version}-provider-plugin</artifactId>
+    <version>1.0.0</version>
+
+    <organization>
+        <name>TRi engineering</name>
+        <url>https://www.tri-engineering.de</url>
+    </organization>
+
+    <scm>
+        <connection>scm:git:git://github.com/tri-engineering/atlassian-kotlin-provider-plugin.git</connection>
+        <developerConnection>scm:git:git://github.com/tri-engineering/atlassian-kotlin-provider-plugin.git</developerConnection>
+        <url>https://github.com/tri-engineering/atlassian-kotlin-provider-plugin</url>
+    </scm>
+
+    <developers>
+        <developer>
+            <name>Ricardo Gross</name>
+            <email>ricardo.gross@tri-engineering.de</email>
+        </developer>
+    </developers>
+
+    <name>kotlin-${kotlin.version}-provider-plugin</name>
+    <description>This plugin provides the runtime for Kotlin™ ${kotlin.version}.</description>
+    <packaging>atlassian-plugin</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-osgi-bundle</artifactId>
+            <version>${kotlin.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>kotlin-${kotlin.version}-provider-plugin-${version}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>com.atlassian.maven.plugins</groupId>
+                <artifactId>maven-amps-plugin</artifactId>
+                <version>${amps.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Atlassian-Plugin-Key>${project.groupId}.${project.artifactId}</Atlassian-Plugin-Key>
+
+                        <Export-Package>
+                            kotlin.*;version=${kotlin.version}
+                        </Export-Package>
+
+                        <Import-Package>
+                            sun.*;resolution:=optional,
+                            *
+                        </Import-Package>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <licenses>
+        <license>
+            <name>Kotlin™ License</name>
+            <url>https://github.com/JetBrains/kotlin/tree/master/license</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <properties>
+        <kotlin.version>1.3.21</kotlin.version>
+        <amps.version>6.3.18</amps.version>
+        <atlassian.plugin.key>${project.groupId}.${project.artifactId}</atlassian.plugin.key>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+        </repository>
+    </distributionManagement>
+</project>
