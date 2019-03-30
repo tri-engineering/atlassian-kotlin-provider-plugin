@@ -16,7 +16,6 @@
 
     <scm>
         <connection>scm:git:git://github.com/tri-engineering/atlassian-kotlin-provider-plugin.git</connection>
-        <developerConnection>scm:git:git://github.com/tri-engineering/atlassian-kotlin-provider-plugin.git</developerConnection>
         <url>https://github.com/tri-engineering/atlassian-kotlin-provider-plugin</url>
     </scm>
 
@@ -24,6 +23,8 @@
         <developer>
             <name>Ricardo Gross</name>
             <email>ricardo.gross@tri-engineering.de</email>
+            <organization>TRi engineering</organization>
+            <organizationUrl>https://tri-engineering.de</organizationUrl>
         </developer>
     </developers>
 
